@@ -1,34 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { CreateUserDto } from '../dto/create-user.dto';
-import { UpdateUserDto } from '../dto/update-user.dto';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
+@ApiTags('users') // Agrupa no Swagger
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  @Get()
+  @ApiOperation({ summary: 'Listar todos os usuários' })
+  @ApiResponse({ status: 200, description: 'Lista retornada com sucesso.' })
+  findAll() {
+    return 'Listando usuários...';
+  }
 
   @Post()
-  create(@Body() data: CreateUserDto) {
-    return this.usersService.create(data);
-  }
-
-  @Get()
-  findAll() {
-    return this.usersService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() data: UpdateUserDto) {
-    return this.usersService.update(+id, data);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  @ApiOperation({ summary: 'Criar um novo usuário' })
+  @ApiResponse({ status: 201, description: 'Usuário criado com sucesso.' })
+  create(@Body() body) {
+    return { message: 'Usuário criado', data: body };
   }
 }

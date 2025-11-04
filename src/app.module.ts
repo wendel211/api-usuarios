@@ -15,13 +15,13 @@ import { ProfilesModule } from './profiles/profiles.module';
         port: parseInt(process.env.DB_PORT ?? '5432', 10),
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
-        database: process.env.DB_NAME,
+        database: process.env.DB_NAME,   
         autoLoadEntities: true,
-        synchronize: true,
+        synchronize: true,  
       }),
     }),
     UsersModule,
     ProfilesModule,
-  ],
-})
-export class AppModule {}
+  ],            
+})    
+export class AppModule {}   

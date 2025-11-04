@@ -7,8 +7,8 @@ export class Profile {
   id: number;
 
   @Column()
-  role: string;
+  bio: string;
 
-  @ManyToOne(() => User, (user) => user.profiles, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, (user) => user.profiles)
   user: User;
 }

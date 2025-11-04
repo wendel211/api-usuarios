@@ -16,7 +16,7 @@ import { ProfilesModule } from './profiles/profiles.module';
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
         autoLoadEntities: true,
-        synchronize: true, // ⚠️ Apenas em desenvolvimento!
+        synchronize: true, 
       }),
     }),
     UsersModule,
